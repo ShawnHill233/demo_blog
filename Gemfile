@@ -5,9 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.5'
 gem 'newrelic_rpm'
 
-gem "therubyracer"
-gem 'less-rails'
-gem 'twitter-bootstrap-rails'
+
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

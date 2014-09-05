@@ -17,7 +17,8 @@ class ArticlesController < ApplicationController
 	end
 
 	def index
-		@article = Article.all
+		@article = Article.all 
+		# @article = Article.where(title: params[:keyword])
 	end
 
 	def show
