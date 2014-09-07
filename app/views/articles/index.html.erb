@@ -1,29 +1,9 @@
-<!-- <h1>Listing Article</h1>
-
-<%= link_to 'New Article', new_article_path %>
-<table>
-	<tr>
-		<th>Title</th>
-		<th>Text</th>
-	</tr>
-
-	<% @article.each do |article| %>
-		<tr>
-			<td><%= article.title %></td>
-			<td><%= article.text %></td>
-			<td><%= link_to 'Show', article_path(article) %></td>
-			<td><%= link_to 'Edit', edit_article_path(article) %></td>
-			<td><%= link_to 'Delete', article_path(article), method: :delete, 
-																data: { confirm:'Are you sure?' } %></td>
-		</tr>
-	<% end %>
-</table>
- -->
-
- <h1>Listing Article</h1>
+ <!-- <h1>Listing Article</h1> -->
  
 <%= link_to 'New Article', new_article_path %>
-
+<h1 class="page-header">
+                    近期文章<small>Welcome</small>
+                </h1>
 	<% @article.each do |article| %>
 
 			<h2>
@@ -35,15 +15,14 @@
 					<%= link_to category.name, '#' %>
 				<% end %>
 			</p>
-			<p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
+			<p><span class="glyphicon glyphicon-time"></span><%= article.created_at.strftime('%Y年%m月%d日') %></p>
 			<!-- <hr>
 			<img class="img-responsive" src="http://placehold.it/900x300" alt="">
 			<hr> -->
 			<p><%= article.text %></p>
 			<a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-			<p>
-				
-			</p>
+			
+			<p></p>
 			<p>
 			<%= link_to 'Show', article_path(article) %> |
 			<%= link_to 'Edit', edit_article_path(article) %> |

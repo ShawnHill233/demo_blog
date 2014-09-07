@@ -3,10 +3,12 @@ class ArticlesController < ApplicationController
 	http_basic_authenticate_with name: 'admin', password: 'admin', except: [:index, :show]
 
 	def new
+		@category = Category.all
 		@article = Article.new
 	end
 
 	def create
+		@category = Category.all
 		@article = Article.new(article_params)
 
 		if @article.save
@@ -24,9 +26,11 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article = Article.find(params[:id])
+		@category = Category.all
 	end
 
 	def edit
+		@category = Category.all
 		@article = Article.find(params[:id])
 	end
 
