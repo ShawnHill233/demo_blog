@@ -18,7 +18,8 @@ class ArticlesController < ApplicationController
 
 	def index
 		# @article = Article.all 
-		@article = Article.search(params[:keyword])
+		@article = Article.includes(:categories).search(params[:keyword]).filter(params[:filter])
+		@category = Category.all
 	end
 
 	def show
