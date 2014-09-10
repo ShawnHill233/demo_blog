@@ -1,14 +1,13 @@
 class ArticlesController < ApplicationController
 
 	http_basic_authenticate_with name: 'admin', password: 'admin', except: [:index, :show]
+	before_action :get_categories, except: [:update, :destroy]
 
 	def new
-		@category = Category.all
 		@article = Article.new
 	end
 
 	def create
-		@category = Category.all
 		@article = Article.new(article_params)
 
 		if @article.save
@@ -21,16 +20,13 @@ class ArticlesController < ApplicationController
 	def index
 		# @article = Article.all 
 		@article = Article.includes(:categories).search(params[:keyword]).filter(params[:filter])
-		@category = Category.all
 	end
 
 	def show
 		@article = Article.find(params[:id])
-		@category = Category.all
 	end
 
 	def edit
-		@category = Category.all
 		@article = Article.find(params[:id])
 	end
 
@@ -54,5 +50,9 @@ class ArticlesController < ApplicationController
 	private
 		def article_params
 			params.require(:article).permit(:title, :text)
+		end
+
+		def get_categories
+			@category = Category.all
 		end
 end
