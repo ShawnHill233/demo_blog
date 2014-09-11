@@ -1,15 +1,23 @@
 Rails.application.routes.draw do
-  get 'users/new'
-
   resources :articles do
     resources :comments 
+  end
+
+  root 'articles#index'
+
+  namespace :admin do
+    root 'admin#index'
+    resources :articles, expect: [:show]
+    get '/signin' => 'sessions#new'
+    post '/signin' => 'sessions#create'
+    delete 'signout' => 'sessions#destroy'  
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'articles#index'
+   # root 'articles#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

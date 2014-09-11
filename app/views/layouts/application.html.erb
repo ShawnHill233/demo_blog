@@ -15,6 +15,9 @@
         <div class="row">
             <!-- Blog Entries Column -->
             <div class="col-md-8">
+                <% flash.each do |key, value| %>
+                  <div class="alert alert-<%= key %>"><%= value %></div>
+                <% end %>
                 <%= yield %>
                 <%= render 'layouts/pager' %>               
             </div>
