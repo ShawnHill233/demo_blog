@@ -1,0 +1,22 @@
+<% content_for :page_title do %>日志管理<% end %>
+
+<%= grid(@articles_grid) do |g|
+
+  g.column name: "#", attribute: "id" do |article|
+    article.id
+  end
+
+  g.column name: "标题", attribute: "title" do |article|
+    article.title
+  end
+
+  g.column name: "创建日期", attribute: "created_at" do |article|
+    article.created_at.strftime("%Y-%m-%d %H:%m")
+  end
+
+  g.column do |article|
+    link_to("编辑", edit_admin_article_path(article), class: "btn btn-default btn-xs") +
+    link_to("删除", admin_article_path(article), method: :delete, class: "btn btn-danger btn-xs")
+  end
+
+end %>

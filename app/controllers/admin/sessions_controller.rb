@@ -1,5 +1,4 @@
 class Admin::SessionsController < AdministratorController
-	# layout 'login'
 
 	def new
 	
