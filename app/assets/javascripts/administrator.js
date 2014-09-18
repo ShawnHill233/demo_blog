@@ -13,5 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require wice_grid
-= require jquery.ui.all
+// = require jquery.ui.all
 //= require turbolinks
