@@ -11,12 +11,12 @@ gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks'
 
 # Build JSON APIs with ease.
-	gem 'jbuilder', '~> 2.0'
+	# gem 'jbuilder', '~> 2.0'
 # Use CoffeeScript for .js.coffee assets and views
 	# gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
-	gem 'jquery-rails'									#rake assets:precompile 生成Heroku静态资源调用
-	gem 'jquery-ui-rails'								#rake assets:precompile 生成Heroku静态资源调用
+	# gem 'jquery-rails'									#rake assets:precompile 生成Heroku静态资源调用
+	# gem 'jquery-ui-rails'								#rake assets:precompile 生成Heroku静态资源调用
 # NewRelic 性能统计
 	# gem 'newrelic_rpm'	
 
