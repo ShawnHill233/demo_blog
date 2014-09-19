@@ -24,13 +24,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem "wice_grid", '3.4.2'
 gem 'redcarpet'
 
-group :development do
-	gem 'sqlite3', '1.3.9'
-	gem 'rspec-rails', '2.13.1'
-	# Spring speeds up development by keeping your application running in the background.
-	gem 'spring'
-end
-
 group :production do
 	gem 'pg'
   gem 'rails_12factor'
@@ -40,7 +33,19 @@ group :doc do
 	gem 'sdoc', '~> 0.4.0'
 end
 
+group :development do
+	gem 'sqlite3', '1.3.9'
+	# Spring speeds up development by keeping your application running in the background.
+	gem 'spring'
+end
+
 group :test do
-	gem 'selenium-webdriver', '2.35.1'
-  gem 'capybara', '2.1.0'
+	gem 'capybara'
+end
+
+group :development, :test do
+	gem 'rspec-rails', '3.1.0'
+	gem 'guard-rspec', '4.3.1'
+	gem 'spork-rails', '4.0.0'
+	gem 'guard-spork', '1.5.1'
 end
