@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Shawn's Blog <%= yield(:title) %></title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 </head>
+
 <body>
-    <%= render 'layouts/header' %>
+  <%= render 'layouts/header' %>
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+        <div class="well">
+          <%= yield %>
+        </div>
+        <%= render 'layouts/pager' %>               
+      </div>
 
-    <!-- Page Content -->
-    <div class="container">
-        <div class="row">
-            <!-- Blog Entries Column -->
-            <div class="col-md-8">
-                <% flash.each do |key, value| %>
-                  <div class="alert alert-<%= key %>"><%= value %></div>
-                <% end %>
-                <%= yield %>
-                <%= render 'layouts/pager' %>               
-            </div>
-
-            <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-               <%= render 'layouts/searcher' %>
-            <div class="well">
-                <h4>文章归档</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-            </div>
-         
-            </div>
-       </div>
-        <!-- /.row -->
-       <hr>
-        <%= render 'layouts/footer' %>
-
+      <!-- Blog Sidebar Widgets Column -->
+      <div class="col-md-4">
+       <%= render 'layouts/searcher' %>
+        <div class="well">
+          <h4>文章归档</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+        </div>   
+      </div>
     </div>
-    <!-- /.container -->
+    <hr>
+    <%= render 'layouts/footer' %>
+  </div>
+  <!-- /.container -->
 
 </body>
 </html>

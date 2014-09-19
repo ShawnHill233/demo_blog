@@ -1,14 +1,16 @@
-<h3>
-	Title:
+<h1>
 	<%= @article.title %>
-</h3>
+</h1>
 <p>
-	Text:
 	<%= markdown(@article.text).html_safe %>
 </p>
 
-<h2>Comments:</h2>
+<hr>
+
+<h3>Comments:</h3>
 <%= render @article.comments %>
 
-<h2>Add a comment:</h2>
+<hr>
+
+<h3>Add a comment:</h3>
 <%= render 'comments/form' %>
