@@ -15,4 +15,7 @@ class Article < ActiveRecord::Base
 	 joins(:categories).where('categories.name = ?', category_name) if category_name.present?
 	}
 
+	scope :filter, -> (article_date){
+		where("strftime('%Y-%m', created_at) = ?", article_date) if article_date.present?
+	}
 end

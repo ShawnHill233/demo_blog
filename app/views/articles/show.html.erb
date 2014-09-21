@@ -4,13 +4,17 @@
 <p>
 	<%= markdown(@article.text).html_safe %>
 </p>
-
 <hr>
 
-<h3>Comments:</h3>
-<%= render @article.comments %>
-
-<hr>
-
-<h3>Add a comment:</h3>
+<!-- Blog Comments -->
+<!-- Comments Form -->
 <%= render 'comments/form' %>
+<hr>
+<!-- Posted Comments -->
+<!-- Comment -->
+<%= render @article.comments %>
+<hr>
+
+<!-- 日志归档 -->
+<%= render 'archive' %>
+

@@ -16,4 +16,11 @@ module ApplicationHelper
 		end
 	end
 
+# 日志归档
+	def archive
+		@mintime = Article.first.created_at.strftime('%Y-%m')
+		@maxtime = Article.last.created_at.strftime('%Y-%m')
+		@mintime..@maxtime
+	end
+
 end

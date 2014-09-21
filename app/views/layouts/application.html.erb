@@ -15,12 +15,12 @@
     <div class="row">
       <!-- Blog Entries Column -->
       <div class="col-md-8">
+        <!-- flash message -->
         <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>"><%= value %></div>
+          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
         <% end %>
-        <div class="well">
-          <%= yield %>
-        </div>
+        <!-- /.flash message -->
+        <%= yield %>
         <%= render 'layouts/pager' %>               
       </div>
 
@@ -28,8 +28,12 @@
       <div class="col-md-4">
        <%= render 'layouts/searcher' %>
         <div class="well">
+          <h4>分类目录</h4>
+          tag1    tag2    tag3
+        </div>
+        <div class="well">
           <h4>文章归档</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+          <%= yield(:archive) %>
         </div>   
       </div>
     </div>

@@ -1,12 +1,17 @@
-<p>
-		<strong>Commenter:</strong>
-		<%= comment.commenter %>
-</p>
-<p>
-		<strong>Comment:</strong>
-		<%= comment.body %>
-</p>
-<p>
-	<%= link_to 'Delete Comment', [comment.article, comment],
+<div class="media">
+	<% if comment.commenter %>				<!-- 去掉会有一个空comment显示，并报错。 -->
+		<a class="pull-left" href="#">
+			<img class="media-object" src="http://placehold.it/64x64" alt="">
+		</a>
+		<div class="media-body">	
+			<h4 class="media-heading">
+			<%= comment.commenter %> <small><%= comment.created_at.strftime('%Y年%m月%d日 %d:%m') %></small>
+			</h4>		
+			<%= comment.body %>		
+		<!-- 		<p>
+			<%= link_to 'Delete Comment', [comment.article, comment],
 			method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+		</p> -->
+		</div>	
+	<% end %>
+</div>
