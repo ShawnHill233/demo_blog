@@ -11,11 +11,11 @@ class Article < ActiveRecord::Base
 	 where("title LIKE ? OR text LIKE ?", "%#{keyword}%", "%#{keyword}%") if keyword.present? 
 	}
 
-	scope :filter, -> (category_name){
+	scope :filter_category, -> (category_name){
 	 joins(:categories).where('categories.name = ?', category_name) if category_name.present?
 	}
 
-	scope :filter, -> (article_date){
+	scope :filter_archive, -> (article_date){
 		where("strftime('%Y-%m', created_at) = ?", article_date) if article_date.present?
 	}
 end

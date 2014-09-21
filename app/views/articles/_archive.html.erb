@@ -1,7 +1,7 @@
 <form>
 <% content_for :archive do %>
 	<% archive.each do |date| %>
-		<%= link_to date, filter: date %><br>
+		<%= link_to date, filter_archive: date %><br>
 	<% end %>
 <% end %>
 </form>

@@ -5,7 +5,9 @@ class ArticlesController < ApplicationController
 
 	def index
 		# @article = Article.all 
-		@article = Article.includes(:categories).search(params[:keyword]).filter(params[:filter])
+		@article = Article.includes(:categories).search(params[:keyword])
+											.filter_category(params[:filter_category])
+											.filter_archive(params[:filter_archive])
 	end
 
 	def show

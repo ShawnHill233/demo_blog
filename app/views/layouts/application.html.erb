@@ -29,7 +29,9 @@
        <%= render 'layouts/searcher' %>
         <div class="well">
           <h4>分类目录</h4>
-          tag1    tag2    tag3
+          <% @category.each do |category| %>
+            <%= link_to category.name, filter_category: category.name %>
+          <% end %>
         </div>
         <div class="well">
           <h4>文章归档</h4>
