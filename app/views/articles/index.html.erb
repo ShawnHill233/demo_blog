@@ -3,12 +3,14 @@
 
 <% @article.each do |article| %>
 <h2><%= link_to article.title, article_path(article) %></h2>
+
 <p>
 	分类: 
 	<% article.categories.each do |category| %> 
-	<%= link_to category.name, '#' %>
+		<%= link_to category.name, action: "index", filter_category: category.name %>
 	<% end %>
 </p>
+
 <p><span class="glyphicon glyphicon-time"></span><%= article.created_at.strftime('%Y年%m月%d日') %></p>
 <p><%= markdown(truncate(article.text, length: 140, separator: /\n/, escape: false)).html_safe %></p>
 <hr>

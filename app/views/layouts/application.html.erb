@@ -27,12 +27,7 @@
       <!-- Blog Sidebar Widgets Column -->
       <div class="col-md-4">
        <%= render 'layouts/searcher' %>
-        <div class="well">
-          <h4>分类目录</h4>
-          <% @category.each do |category| %>
-            <%= link_to category.name, filter_category: category.name %>
-          <% end %>
-        </div>
+       <%= render 'layouts/category' %> 
         <div class="well">
           <h4>文章归档</h4>
           <%= yield(:archive) %>
