@@ -1,6 +1,6 @@
 class Admin::ArticlesController < AdministratorController
 
-	http_basic_authenticate_with name: 'admin', password: 'admin', except: [:index, :show]
+	http_basic_authenticate_with name: 'admin', password: 'admin', except: [:show]
 	before_action :get_categories, except: [:update, :destroy]
 
 	def new
@@ -11,17 +11,20 @@ class Admin::ArticlesController < AdministratorController
 		@article = Article.new(article_params)
 
 		if @article.save
-			redirect_to @article
+			flash[:success] = "创建日志成功"
+      redirect_to admin_articles_path
 		else
-			render 'new'
+			flash.now[:danger] = "创建日志失败"
+      render "new"
 		end
 	end
 
 	def index
-		 @articles_grid = initialize_grid(Article,
-                                    order: "created_at",
-                                    order_direction: "desc"
-                                   )
+		@articles_grid = initialize_grid(Article,
+			include: [:categories],
+			order: "created_at",
+			order_direction: "desc"
+			)
 	end
 
 	def edit
@@ -40,17 +43,22 @@ class Admin::ArticlesController < AdministratorController
 
 	def destroy
 		@article = Article.find(params[:id])
-		@article.destroy
 
-		redirect_to articles_path
+    if @article.destroy
+      flash[:success] = "日志删除成功"
+    else
+      flash[:danger] = "日志删除失败"
+    end
+
+    redirect_to admin_articles_path
 	end
 
 	private
-		def article_params
-			params.require(:article).permit(:title, :text)
-		end
+	def article_params
+		params.require(:article).permit(:title, :text)
+	end
 
-		def get_categories
-			@category = Category.all
-		end
+	def get_categories
+		@category = Category.all
+	end
 end

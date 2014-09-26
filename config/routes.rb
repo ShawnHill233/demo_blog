@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   root 'articles#index'
 
   namespace :admin do
-    root 'admin#index'
-    resources :articles, expect: [:show]
+    root 'articles#index'
+    
     get '/signin' => 'sessions#new'
     post '/signin' => 'sessions#create'
     delete 'signout' => 'sessions#destroy'  
+
+    resources :articles, except: [:show]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

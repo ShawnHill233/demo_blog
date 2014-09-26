@@ -1,5 +1,7 @@
-@import "bootstrap-sprockets";
 @import "bootstrap";
+
+//= require wice_grid
+
 
 body {
 	padding-top: 60px;

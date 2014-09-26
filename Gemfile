@@ -15,13 +15,13 @@ gem 'turbolinks'
 # Use CoffeeScript for .js.coffee assets and views
 	# gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
-	# gem 'jquery-rails'									#rake assets:precompile 生成Heroku静态资源调用
-	# gem 'jquery-ui-rails'								#rake assets:precompile 生成Heroku静态资源调用
+gem 'jquery-rails'									#rake assets:precompile 生成Heroku静态资源调用 , admin 调用 
+gem 'jquery-ui-rails'								#rake assets:precompile 生成Heroku静态资源调用 , admin 调用
 # NewRelic 性能统计
 	# gem 'newrelic_rpm'	
 
 gem 'bcrypt', '~> 3.1.7'
-gem "wice_grid", '3.4.2'
+gem "wice_grid", '3.4.10'
 gem 'redcarpet'
 
 group :production do

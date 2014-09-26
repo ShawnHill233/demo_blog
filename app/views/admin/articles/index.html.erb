@@ -2,12 +2,17 @@
 
 <%= grid(@articles_grid) do |g|
 
-  g.column name: "#", attribute: "id" do |article|
+  g.column name: "ID", attribute: "id" do |article|
     article.id
   end
 
   g.column name: "标题", attribute: "title" do |article|
     article.title
+  end
+
+  g.column name: "分类", attribute: "name", model: "Category" do |article|
+    article.categories.map { |c| c.name }.join(" ")
+
   end
 
   g.column name: "创建日期", attribute: "created_at" do |article|
@@ -19,4 +24,4 @@
     link_to("删除", admin_article_path(article), method: :delete, class: "btn btn-danger btn-xs")
   end
 
-end %>
+end -%>
