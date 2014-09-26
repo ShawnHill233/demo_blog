@@ -1,0 +1,11 @@
+ <div class="well">
+ 	<h4>文章归档</h4>
+ 	<form>
+
+ 		<% archive.each do |date| %>
+ 		<%= link_to date, action: "index", filter_archive: date %><br>
+ 		<% end %>
+
+ 	</form>
+
+ </div>   
