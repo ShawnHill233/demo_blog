@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     delete 'signout' => 'sessions#destroy'  
 
     resources :articles, except: [:show]
+    resources :categories, only: [:new]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

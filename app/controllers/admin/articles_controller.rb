@@ -1,7 +1,7 @@
 class Admin::ArticlesController < AdministratorController
 
 	http_basic_authenticate_with name: 'admin', password: 'admin', except: [:show]
-	before_action :get_categories, except: [:update, :destroy]
+	before_action :get_categories, only: [:show, :index]
 
 	def new
 		@article = Article.new
@@ -9,7 +9,7 @@ class Admin::ArticlesController < AdministratorController
 
 	def create
 		@article = Article.new(article_params)
-
+		
 		if @article.save
 			flash[:success] = "创建日志成功"
       redirect_to admin_articles_path
@@ -35,8 +35,10 @@ class Admin::ArticlesController < AdministratorController
 		@article = Article.find(params[:id])
 
 		if @article.update(article_params)
-			redirect_to @article
+			flash[:success] = "更新日志成功"
+			redirect_to admin_articles_path
 		else
+			flash[:success] = "更新日志失败"
 			render 'edit'	
 		end
 	end
@@ -55,7 +57,8 @@ class Admin::ArticlesController < AdministratorController
 
 	private
 	def article_params
-		params.require(:article).permit(:title, :text)
+		params.require(:article).permit(:title, :text,																		
+																		 :categories_attributes => [:name])
 	end
 
 	def get_categories

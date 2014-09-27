@@ -5,13 +5,20 @@
 	<%= f.text_field :title, class: "form-control" %>
 </div>
 
+<%= f.fields_for :categories, @article.categories.build do |c| %>
+	<div class="form-group">
+		<%= c.label :name, "分类" %>
+		<%= c.text_field :name, class: "form-control" %>
+	</div>
+<% end %>
+
 <div class="form-group">
 	<%= f.label :text, "正文内容" %>
 	<%= f.text_area :text, class: "form-control", rows: 15 %>
 </div>
 
 <div class="form-group">
-	<%= f.submit  "添加", class: "btn btn-primary col-xs-2 pull-right" %>
+	<%= f.submit "添加", class: "btn btn-primary col-xs-2 pull-right" %>
 </div>
 
 <% end %>

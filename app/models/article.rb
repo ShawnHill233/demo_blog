@@ -1,6 +1,7 @@
 class Article < ActiveRecord::Base
 	has_and_belongs_to_many :categories
-	
+	accepts_nested_attributes_for :categories
+
 	has_many :comments, dependent: :destroy
 	validates :title, presence: true,
 										length: { minimum: 5 }
