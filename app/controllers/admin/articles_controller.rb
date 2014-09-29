@@ -76,12 +76,15 @@ class Admin::ArticlesController < AdministratorController
 
 	def create_update_categories
 		@article.categories.clear
-		article_params["categories_attributes"].each_value do |category|
-			if @category = Category.find_by_name(category["name"])
-				@article.categories << @category
-			else
-				@category = Category.create(name: category["name"])
-				@article.categories << @category
+		article_params["categories_attributes"].each_value do |category_arr|
+			categories = category_arr["name"].strip.split(',')
+			categories.each do |category|
+				if @category = Category.find_by_name(category.strip)
+					@article.categories << @category
+				else
+					@category = Category.create(name: category.strip)
+					@article.categories << @category
+				end
 			end
 		end
 	end
