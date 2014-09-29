@@ -24,6 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "wice_grid", '3.4.10'
 gem 'redcarpet'
 gem 'will_paginate', '~> 3.0'   	  #paging
+gem 'will_paginate-bootstrap'
 
 group :production do
 	gem 'pg'

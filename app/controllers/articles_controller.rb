@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
 		@article = Article.search(params[:keyword])
 											.filter_category(params[:filter_category])
 											.filter_archive(params[:filter_archive])
+											.paginate(page: params[:page], per_page: 8)
 											
 	end
 
