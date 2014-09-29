@@ -5,7 +5,7 @@
 	<%= f.text_field :title, class: "form-control" %>
 </div>
 
-<%= f.fields_for :categories, @article.categories.build do |c| %>
+<%= f.fields_for :categories do |c| %>
 	<div class="form-group">
 		<%= c.label :name, "分类" %>
 		<%= c.text_field :name, class: "form-control" %>

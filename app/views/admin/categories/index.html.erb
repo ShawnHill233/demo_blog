@@ -1,0 +1,22 @@
+<% content_for :page_title do %>日志类目<% end %>
+
+<%= grid(@categories_grid) do |g|
+
+  g.column name: "ID", attribute: "id" do |category|
+    category.id
+  end
+
+  g.column name: "名称", attribute: "name" do |category|
+    category.name
+  end
+
+  g.column name: "创建日期", attribute: "created_at" do |category|
+    category.created_at.strftime("%Y-%m-%d %H:%m")
+  end
+
+  g.column do |category|
+    link_to("编辑", edit_admin_category_path(category), class: "btn btn-default btn-xs") +
+    link_to("删除", admin_category_path(category), method: :delete, class: "btn btn-danger btn-xs")
+  end
+
+end -%>
