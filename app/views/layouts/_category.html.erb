@@ -1,15 +1,13 @@
 <!-- Blog Categories Well -->
-<div class="well">
-    <h4>分类目录</h4>
-    <div class="row">
-        <div class="col-lg-6">
-            <ul class="list-unstyled">
-              <% @category.each do |category| %>
-              <li><%= link_to category.name, action: "index", filter_category: category.name %>
-              </li>
-              <% end %>
-          </ul>
-      </div>
-    </div>
-    <!-- /.row -->
+<!-- <div class="well"> -->
+
+<form>
+  <div class="list-group">
+    <a class="list-group-item active">分类目录</a>  
+    <% @category.each do |category| %>
+      <%= link_to category.name,  { action: "index" , filter_category: category.name }, 
+                class: "list-group-item" %>    
+    <% end %>
   </div>
+  <!-- </div> -->
+</form>

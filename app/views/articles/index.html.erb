@@ -10,7 +10,7 @@
 </p>
 
 <p><span class="glyphicon glyphicon-time"></span><%= article.created_at.strftime('%Y年%m月%d日') %></p>
-<p><%= markdown(truncate(article.text, length: 140, separator: /\n/, escape: false)).html_safe %></p>
+<p><%= markdown(truncate(article.text, length: 240, separator: /\n/, escape: false)).html_safe %></p>
 <hr>
 <% end %>
 
