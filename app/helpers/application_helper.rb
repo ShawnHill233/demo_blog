@@ -18,9 +18,13 @@ module ApplicationHelper
 
 # 日志归档
 	def archive
-		@mintime = Article.first.created_at.strftime('%Y-%m')
-		@maxtime = Article.last.created_at.strftime('%Y-%m')
+		if !Article.all.empty?
+
+		@mintime = Article.first.created_at.strftime('%Y-%m') 
+		@maxtime = Article.last.created_at.strftime('%Y-%m') 
 		@mintime..@maxtime
+
+		end
 	end
 
 end
