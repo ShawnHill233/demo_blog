@@ -26,16 +26,11 @@ gem 'redcarpet'
 gem 'will_paginate', '~> 3.0'   	  #paging
 gem 'will_paginate-bootstrap'
 
-group :production do
-	gem 'pg'
-  gem 'rails_12factor'
-end
-
 group :doc do
 	gem 'sdoc', '~> 0.4.0'
 end
 
-group :development do
+group :development, :production do
 	gem 'sqlite3', '1.3.9'
 	# Spring speeds up development by keeping your application running in the background.
 	gem 'spring'
@@ -50,4 +45,16 @@ group :development, :test do
 	gem 'guard-rspec', '4.3.1'
 	gem 'spork-rails', '4.0.0'
 	gem 'guard-spork', '1.5.1'
+# Capistrano 
+  gem 'capistrano-rails',   '~> 1.1', require: false
+  gem 'capistrano-bundler', '~> 1.1', require: false
+
+
 end
+
+# Capistrano 
+gem 'rake'
+gem 'capistrano', '~> 3.0', require: false, group: :development
+gem 'capistrano-rvm'
+
+
