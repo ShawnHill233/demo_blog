@@ -5,7 +5,8 @@ class ArticlesController < ApplicationController
 
 	def index
 		# @article = Article.all 
-		@article = Article.search(params[:keyword])
+		@article = Article.order(created_at: :desc)
+											.search(params[:keyword])
 											.filter_category(params[:filter_category])
 											.filter_archive(params[:filter_archive])
 											.paginate(page: params[:page], per_page: 8)
