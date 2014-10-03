@@ -1,9 +1,28 @@
 module ApplicationHelper
 	
 	def markdown(text)
-  @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(no_links: true, hard_wrap: true),
-  	 autolink: true, fenced_code_blocks: true, tables: true)
-  @markdown.render(text)
+		renderer = HTMLwithCodeRay.new({
+      :hard_wrap => true  
+    })
+
+    options = {
+      :autolink => true,
+      :no_intra_emphasis => true,
+      :fenced_code_blocks => true,
+      :lax_html_blocks => true,
+      :strikethrough => true,
+      :superscript => true,
+      :tables => true
+    }
+
+  	@markdown ||= Redcarpet::Markdown.new(renderer, options)
+  	@markdown.render(text)
+	end
+
+	class HTMLwithCodeRay < Redcarpet::Render::HTML
+		def block_code(code, language)
+			CodeRay.scan(code, language).div(:tab_width=>2)
+		end
 	end
 
   # Returns the full title on a per-page basis.
