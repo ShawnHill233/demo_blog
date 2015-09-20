@@ -14,7 +14,20 @@
 
 <div class="form-group">
 	<%= f.label :text, "正文内容" %>
-	<%= f.text_area :text, class: "form-control", rows: 15 %>
+	<div class="blog_content_editor_tab clearfix">
+    <%= link_to "编辑", edit_admin_article_path, id: "article_edit", remote: true %>
+    <%= link_to "预览", "#", id: "article_preview" %>
+  </div>
+  <div id="article_edit_div">
+		<%= f.text_area :text, class: "form-control", rows: 15 %>
+	</div>
+  <div id="article_preview_div" class="context" style="display:none">
+  	<%= text_area :article_preview, :text, class: "form-control", rows:15 %>
+  </div>
+  <!-- <div>
+    [<a href="http://wowubuntu.com/markdown/" target="_blank">Markdown中文帮助</a>]
+    [<a href="https://help.github.com/articles/github-flavored-markdown" target="_blank">Github风格的Markdown格式</a>]
+  </div> -->
 </div>
 
 <div class="form-group">

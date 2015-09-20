@@ -16,3 +16,28 @@
 //= require wice_grid
 //= require bootstrap
 //= require_self
+
+$(document).on("click", "#article_preview", function(e) {
+	$('#article_edit_div').hide();
+	$('#article_preview_div').show();
+	var text = $('#article_text').val();
+
+	// $.ajax({
+ //    type: 'POST',
+ //    url: 'preview',
+ //    data: JSON.stringify({ data: text }), // or JSON.stringify ({name: 'jonas'}),
+	// 	contentType: 'application/json',
+ //  	dataType:"json",
+ //    success: function(data) { $('#article_preview_text').html(data);},
+	// });
+
+	$.post('preview', {data: $('#article_text').val()}, function(data) {
+    $('#article_preview_div').html(data.text);
+  });
+
+	
+});
+
+
+
+

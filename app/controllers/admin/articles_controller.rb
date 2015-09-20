@@ -1,6 +1,6 @@
-class Admin::ArticlesController < AdministratorController
+class Admin::ArticlesController < AdminController
 
-	http_basic_authenticate_with name: 'admin', password: 'admin', except: [:show]
+	# http_basic_authenticate_with name: 'admin', password: 'admin', except: [:show]
 	before_action :get_categories, only: [:show, :index]
 
 	def new
@@ -59,6 +59,12 @@ class Admin::ArticlesController < AdministratorController
     end
 
     redirect_to admin_articles_path
+	end
+
+  def preview
+		@text = params[:data]
+		# logger.info("ssddd..." + @body)
+		# render json: @body
 	end
 
 	private

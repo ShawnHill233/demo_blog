@@ -1,4 +1,4 @@
-class Admin::CategoriesController < AdministratorController
+class Admin::CategoriesController < AdminController
 
 	def index
 		@categories_grid = initialize_grid(Category,

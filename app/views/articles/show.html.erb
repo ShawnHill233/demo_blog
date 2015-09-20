@@ -2,7 +2,8 @@
 	<%= @article.title %>
 </h1>
 <p>
-	<%= markdown(@article.text).html_safe %>
+	<%# markdown(@article.text) %>
+	<%= sanitize_topic (markdown(@article.text)) %>
 </p>
 <hr>
 

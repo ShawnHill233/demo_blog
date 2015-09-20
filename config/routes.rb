@@ -8,13 +8,19 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'articles#index'
     
-    get '/signin' => 'sessions#new'
-    post '/signin' => 'sessions#create'
-    delete 'signout' => 'sessions#destroy'  
+    get 'signin' => 'sessions#new'
+    post 'signin' => 'sessions#create'
+    delete 'signout' => 'sessions#destroy'
 
-    resources :articles, except: [:show]
+    resources :articles, except: [:show] do
+      member do
+        post :preview
+      end
+    end
     resources :categories, except: [:show]
   end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

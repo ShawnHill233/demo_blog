@@ -12,7 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks'
 
 # Build JSON APIs with ease.
-	# gem 'jbuilder', '~> 2.0'
+gem 'jbuilder', '~> 2.0'
 # Use CoffeeScript for .js.coffee assets and views
 	# gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
@@ -23,7 +23,6 @@ gem 'jquery-ui-rails'								#rake assets:precompile 生成Heroku静态资源调
 
 gem 'bcrypt', '~> 3.1.7'
 gem "wice_grid", '3.4.10'
-gem 'redcarpet'
 gem 'coderay'
 gem 'will_paginate', '~> 3.0'   	  #paging
 gem 'will_paginate-bootstrap'
@@ -57,4 +56,8 @@ gem 'rake'
 gem 'capistrano', '~> 3.0', require: false, group: :development
 gem 'capistrano-rvm'
 
-
+# Markdown 格式 & 文本处理
+gem 'redcarpet', '~> 3.0.0'
+gem 'rouge', '~> 1.3.4'
+gem 'auto-space', '0.0.4'
+gem 'nokogiri'

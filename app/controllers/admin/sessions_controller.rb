@@ -1,4 +1,4 @@
-class Admin::SessionsController < AdministratorController
+class Admin::SessionsController < AdminController
 
 	def new
 	

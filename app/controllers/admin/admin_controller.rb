@@ -1,9 +1,10 @@
-class Admin::AdminController < AdministratorController
+class Admin::AdminController < AdminController
   
   def index
   	if !signed_in?
-		flash[:danger] = "需要登录授权才能访问"
-    redirect_to admin_signin_path
-	end
+			flash[:danger] = "需要登录授权才能访问"
+    	redirect_to admin_signin_path
+		end
   end
+
 end
