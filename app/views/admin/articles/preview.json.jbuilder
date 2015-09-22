@@ -1,1 +1,1 @@
-json.text sanitize_topic(MarkdownTopicConverter.format(@text))
+json.text markdown(@text)

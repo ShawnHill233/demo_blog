@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     delete 'signout' => 'sessions#destroy'
 
     resources :articles, except: [:show] do
-      member do
+      collection do
         post :preview
       end
     end
